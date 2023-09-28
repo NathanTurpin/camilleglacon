@@ -1,0 +1,82 @@
+
+:root {
+  --content-primary: #0D0D0D;
+  --content-secondary: #262626;
+  --content-tertiary: #333333;
+  --content-invert: #FFFFFF;
+  --surface-primary: #E8DCD0;
+  --surface-secondary: #EEE5DD;
+  --primary: #D8B9DA;
+  --on-primary: #412343;
+  --secondary: #ECCD95;
+  --on-secondary: #4D380E;
+  --tertiary: #C1C7AE;
+  --on-tertiary: #333625;
+}
+
+p {
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 400;
+}
+
+.large {
+  line-height: 150%;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.bold {
+  line-height: 150%;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mention {
+  font-size: 16px;
+  line-height: 125%;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 125%;
+}
+h2 {
+  font-size: 26px;
+  line-height: 125%;
+}
+h3 {
+  font-size: 20px;
+  line-height: 125%;
+}
+h4 {
+  font-size: 20px;
+  line-height: 150%;
+}
+.baseline {
+  font-size: 60px;
+  line-height: 125%;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+ 
+}
+
+body {
+   
+  font-family: 'Work Sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+}
+
+@font-face {
+  font-family: 'RFCeqabro';
+  src: url('../assets/fonts/RFCeqabro-Display.ttf') format('truetype');
+}
