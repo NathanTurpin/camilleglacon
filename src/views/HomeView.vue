@@ -1,16 +1,6 @@
 <template>
   <main>
-    <p class="">cccccccc</p>
-    <p class="large">cccccccc</p>
-    <p class="bold">cccccccc</p>
-    <p class="mention">cccccccc</p>
-
-    <h1>cccccccc</h1>
-    <h2>cccccccc</h2>
-    <h3>cccccccc</h3>
-    <h4>cccccccc</h4>
-    <p class="baseline">cccccccc</p>
-
+    ccccc
     <div v-if="pageData">
       {{ pageData.results[0].properties.Name.rich_text[0].text.content }}
     </div>
@@ -41,8 +31,4 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss">
-.baseline {
-  font-family: 'RFCeqabro', sans-serif;
-}
-</style>
+<style lang="scss"></style>
