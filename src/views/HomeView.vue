@@ -1,6 +1,5 @@
 <template>
   <main>
-    ccccc
     <div v-if="pageData">
       {{ pageData.results[0].properties.Name.rich_text[0].text.content }}
     </div>
