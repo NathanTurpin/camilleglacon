@@ -5,11 +5,9 @@ import apiClient from '@/API/Axios.api'
 export const usePagesStore = defineStore('pages', () => {
   const state = reactive({})
 
-  async function getPage() {
+  async function getDb() {
     try {
-      console.log('cc')
-      const response = await apiClient.get('/notion-data')
-      console.log(response)
+      const response = await apiClient.get('/db')
       return response.data
     } catch (error) {
       console.error('Erreur lors de la récupération des actions :', error)
@@ -17,11 +15,9 @@ export const usePagesStore = defineStore('pages', () => {
     }
   }
 
-  async function getDb() {
+  async function getPageById(id) {
     try {
-      console.log('cc')
-      const response = await apiClient.get('/db')
-      console.log(response)
+      const response = await apiClient.get('/page/' + id)
       return response.data
     } catch (error) {
       console.error('Erreur lors de la récupération des actions :', error)
@@ -30,7 +26,7 @@ export const usePagesStore = defineStore('pages', () => {
   }
   return {
     state,
-    getPage,
-    getDb
+    getDb,
+    getPageById
   }
 })

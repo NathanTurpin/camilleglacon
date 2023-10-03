@@ -41,16 +41,21 @@ h1 {
   font-size: 32px;
   line-height: 125%;
   font-weight: 400;
+  font-family: 'RFCeqabro', 'sans serif';
 }
 h2 {
   font-size: 26px;
   line-height: 125%;
   font-weight: 400;
+  font-family: 'RFCeqabro', 'sans serif';
+
 }
 h3 {
   font-size: 20px;
   line-height: 125%;
   font-weight: 400;
+  font-family: 'RFCeqabro', 'sans serif';
+
 }
 h4 {
   font-size: 20px;
@@ -85,7 +90,13 @@ body {
 }
 
 a {
-  text-decoration: none;
+  color: var(--content-primary);
+font-family: Work Sans;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+text-decoration-line: underline;
 }
 
 @font-face {
