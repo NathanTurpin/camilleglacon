@@ -35,7 +35,7 @@
   text-align: center;
   gap: 4rem;
   margin-top: 4rem;
-
+  height: 85vh;
   &__title {
     font-family: 'RFCeqabro', sans-serif;
   }

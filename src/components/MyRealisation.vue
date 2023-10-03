@@ -25,14 +25,23 @@ const fetchdbData = async () => {
 // Computed property pour filtrer les données
 const filteredData = computed(() => {
   if (dbData.value) {
-    return dbData.value.results.slice(0, 4)
+    return dbData.value.results.slice(0, 4).map((data, index) => ({
+      ...data,
+      isActive: index === 0 // Ajoutez une propriété isActive à chaque élément
+    }))
   } else {
     return []
   }
 })
 
-const test = (data) => {
+const itemSelected = (data) => {
   pageData.value = data.properties
+  filteredData.value.forEach((item) => {
+    item.isActive = false
+  })
+
+  // Activez uniquement l'élément cliqué
+  data.isActive = true
 }
 
 onMounted(() => {
@@ -49,9 +58,12 @@ onMounted(() => {
         v-for="(data, index) in filteredData"
         :key="index"
         class="realisations__item"
-        @click="test(data)"
+        @click="itemSelected(data)"
       >
-        <h2 class="realisations__subtitle">
+        <h2
+          class="realisations__subtitle"
+          :class="{ 'realisations__subtitle--active': data.isActive }"
+        >
           {{ data.properties.Name.rich_text[0].text.content }}
         </h2>
         <h4 class="realisations__year">
@@ -63,6 +75,10 @@ onMounted(() => {
             {{ tagIndex < data.properties.Tags.multi_select.length - 1 ? ' - ' : '' }}
           </p>
         </div>
+        <div
+          class="realisations__trait"
+          :class="{ 'realisations__trait--active': data.isActive }"
+        ></div>
       </div>
     </div>
 
@@ -73,7 +89,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .realisations {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: var(--surface-secondary);
   padding-top: 3rem;
@@ -87,13 +103,36 @@ onMounted(() => {
   }
 
   &__item {
+    position: relative;
     width: calc(25% - 1rem);
+    cursor: pointer;
+    transition: 5s ease;
     @media (max-width: 768px) {
       width: 100%;
+    }
+
+    &:hover {
+      .realisations__trait {
+        width: 100%;
+      }
+      .realisations__subtitle {
+        --p: 100%;
+      }
     }
   }
   &__title {
     margin-bottom: 3rem;
+  }
+  &__subtitle {
+    width: fit-content;
+    padding: 1%;
+    background: linear-gradient(var(--primary) 0 0) calc(100% - var(--p, 0%)) / var(--p, 0%)
+      no-repeat;
+    transition: 0.4s, background-position 0s;
+
+    &--active {
+      background: var(--primary);
+    }
   }
   &__year {
     margin-bottom: 2rem;
@@ -104,5 +143,27 @@ onMounted(() => {
     flex-wrap: wrap;
     gap: 1%;
   }
+
+  &__trait {
+    height: 2px; /* Hauteur du trait */
+    width: 0; /* Largeur initiale du trait (0%) */
+    background-color: var(--content-primary); /* Couleur du trait */
+    transition: width 0.3s ease; /* Transition de la largeur avec une durée de 0.3s */
+    &--active {
+      width: 100%;
+    }
+  }
+}
+.realisations__subtitle::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px; /* Hauteur du trait */
+  /* Transition de la transformation */
+}
+
+.realisations__item:hover .realisations__subtitle::before {
 }
 </style>
