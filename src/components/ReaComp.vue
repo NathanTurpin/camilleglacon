@@ -8,6 +8,7 @@ const props = defineProps({
   <div class="rea-details" v-if="props.pageData">
     <div class="rea-details__image">
       <img
+        class="rea-details__responsive-img"
         :src="props.pageData.Thumbnail.files[0].file.url"
         alt=""
         v-if="props.pageData.Thumbnail.files[0]"
@@ -93,6 +94,17 @@ const props = defineProps({
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+  &__responsive-img {
+    max-width: 100%;
+    height: auto;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-content: center;
+    &__content {
+      width: 100%;
+    }
   }
 }
 </style>

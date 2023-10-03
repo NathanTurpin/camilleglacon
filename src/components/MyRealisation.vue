@@ -53,7 +53,7 @@ onMounted(() => {
   <section class="realisations">
     <h1 class="realisations__title">Mes réalisations</h1>
 
-    <div class="realisations__content">
+    <div class="realisations__content realisations__slider">
       <div
         v-for="(data, index) in filteredData"
         :key="index"
@@ -89,16 +89,14 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .realisations {
-  height: 100%;
   width: 100%;
   background-color: var(--surface-secondary);
-  padding-top: 3rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-top: 3vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
 
   &__content {
     display: flex;
-    flex-wrap: wrap;
     gap: 1rem;
   }
 
@@ -153,17 +151,20 @@ onMounted(() => {
       width: 100%;
     }
   }
-}
-.realisations__subtitle::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px; /* Hauteur du trait */
-  /* Transition de la transformation */
-}
 
-.realisations__item:hover .realisations__subtitle::before {
+  @media (max-width: 768px) {
+    &__slider {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto; /* Permet de faire défiler les éléments */
+      scroll-snap-type: x mandatory; /* Assure le défilement en douceur */
+    }
+    &__item {
+      flex: 0 0 60%; /* Chaque élément prend 80% de la largeur sans rétrécissement */
+      cursor: pointer;
+      scroll-snap-align: start; /* Aligne les éléments sur les bords du conteneur */
+      transition: border-bottom 5s ease;
+    }
+  }
 }
 </style>

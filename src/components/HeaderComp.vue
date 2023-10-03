@@ -13,13 +13,7 @@
 
     <div>
       <h1 class="header__title">J'ai un projet</h1>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="198"
-        height="8"
-        viewBox="0 0 198 8"
-        fill="none"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" width="198" viewBox="0 0 198 8" fill="none">
         <path
           d="M197.854 4.35355C198.049 4.15829 198.049 3.84171 197.854 3.64645L194.672 0.464466C194.476 0.269204 194.16 0.269204 193.964 0.464466C193.769 0.659728 193.769 0.976311 193.964 1.17157L196.793 4L193.964 6.82843C193.769 7.02369 193.769 7.34027 193.964 7.53553C194.16 7.7308 194.476 7.7308 194.672 7.53553L197.854 4.35355ZM0.5 4.5H197.5V3.5H0.5V4.5Z"
           fill="black"
@@ -33,11 +27,16 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 4rem;
-  margin-top: 4rem;
-  height: 85vh;
+  gap: 4vw;
+  margin: 5vw 0;
+  height: 100%;
   &__title {
     font-family: 'RFCeqabro', sans-serif;
+    @media (max-width: 768px) {
+      font-size: 26px;
+      font-style: normal;
+      font-weight: 400;
+    }
   }
 }
 .edit-title {
@@ -47,17 +46,20 @@
 
 .baseline {
   font-family: 'RFCeqabro', sans-serif;
-  line-height: 6rem;
+  line-height: 8.16vw;
   &--bg-primary {
     background-color: var(--primary);
-    width: 20px;
-    height: 10px;
   }
   &--bg-secondary {
     background-color: var(--secondary);
   }
   &--bg-tertiary {
     background-color: var(--tertiary);
+  }
+  @media (max-width: 768px) {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 125%;
   }
 }
 </style>
